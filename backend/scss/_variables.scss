@@ -1,0 +1,17 @@
+// 変数の設定
+$user-select: none; // ユーザーがテキストを選択できるかどうか。noneは選択できない設定
+$textarea-user-select: auto; // ↑textarea要素のスタイルが適用されている時のみ選択できるようにする。
+// 画像関係の変数
+// ページロード時の画像
+$pageload-image: 
+  'https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/bg.c5d890d9.jpg'
+  ; 
+// 画面中央のローディング画像
+$pageload-images_center: (
+  center1: 'https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/loading.dd32722e.gif',
+  center2: 'https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/loading.dd32722e.gif',
+  center3: 'https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/loading.dd32722e.gif'
+);
+$default-pageloading-image_center:
+  'https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/loading.dd32722e.gif'
+  ;

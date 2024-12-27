@@ -1,0 +1,86 @@
+//本SCSSでは、ローディングされた時の処理などを記す。
+//本SCSSは、cssフォルダにメインのcssとは別にコンパイルされる。
+@use 'variables';//変数の呼び出し
+@use 'mixin';//mixinの呼び出し
+
+
+//利用するキーフレームの設定
+//①ページロード時のキーフレーム。前面表示する背景画像をフェードアウトする。
+@keyframes page-load-fadeout {//page-load-fadeoutは、ページをフェードアウトするアニメーション
+//後で記述するが、z-indexが10から-1に徐々に代わりながら透明化する仕様。
+  0% {//0%は、アニメーションの開始時の設定
+    opacity: 1;//透明度を1に設定。1は不透明、0は透明を示す。
+  }
+  to {//toは、アニメーションの終了時の設定
+    opacity: 0;//透明度を0に設定
+    display: none;//display:none;は、要素を非表示にする。要素が消えるだけでなく、要素のスペースも消える。
+    z-index: -1;//最背面に表示。
+  }
+}
+
+
+//ページをロードした時のスタイル
+.pageLoading__00ff1{//ページをロードした時の処理
+  position: fixed; //fixedは、スクロールしても画面上部に固定される。左右の位置は、top:0;right:0;などで指定する。
+  width: 100vw;//画面の横幅を100%にする
+  height: 100vh;//画面の縦幅を100%にする
+  z-index: 10;//z-indexは、重なり順序を指定する。数値が大きいほど上に表示される。10は今のところ最大値。
+  background: #fff;//背景色を白にする(画像を全体に表示するが、画像が読み込まれるまでの間に白背景を表示する)
+  background-image: url(variables.$pageload-image);//背景画像を設定。url()内に画像のパスを指定する。
+  //画像の読込。
+  background-size: cover;//背景画像を全体に表示する。coverは、画像を縦横比を保ちつつ全体に表示する。
+  background-position: 50%; //背景画像の位置を中央に設定。50%は中央を示す。ちなみに0%は左端、100%は右端。
+  font-family: FZYASHJW_ZHONG, sans-serif; //フォントファミリーを設定。FZYASHJW_ZHONGは、フォントの名前。sans-serifはサンセリフ体のフォントを指定。
+
+  //フェードアウトのアニメーション。このタグが入ったタイミングでフェードアウトが始まる。
+  &.fadeout_loading {//fadeout_loadingは、フェードアウトのアニメーション
+    -webkit-animation: page-load-fadeout .5s ease both;//アニメーションを設定。page-load-fadeoutは、アニメーションの名前。.5sは0.5秒。webkitは、Google ChromeなどのWebkit系ブラウザ向けの設定。
+    animation: page-load-fadeout .5s ease both;//アニメーションを設定。page-load-fadeoutは、アニメーションの名前。.5sは0.5秒。
+    //ease bothは、開始と終了のアニメーションがゆっくりと行われる設定
+
+    //アニメーションの遅延設定。0.5秒後にアニメーションが開始される。
+    -webkit-animation-delay: .5s;
+    animation-delay: .5s;
+    //アニメーションがすぐに開始されないようにするための設定。
+  }
+
+  //子要素の設定
+  //画面中央のローディング画像の設定
+  .pageLoading_center__00ff1{
+    position: absolute; //absoluteは、親要素に対して相対的な位置を指定する。
+    //親要素がposition:fixed;の場合、親要素は画面全体を覆うため、absoluteは画面全体に対して相対的な位置を指定することになる。
+    //中心に配置したいので、top:50%;left:50%;で親要素の中心に配置する。
+    top: 50%;//上から50%の位置に配置
+    left: 50%;//左から50%の位置に配置
+    //画像の場合、左上の角が基準になるため、あとで50%/containで画像を中央に配置する。
+    
+    //画像パターンA
+    &.center__00ff1_image1{
+      //mixinの呼び出し(center)
+    @include mixin.Loading-image("center","center1");//mixinの呼び出し。centerは、画面中央に配置する設定。
+    }
+    //画像パターンB
+    &.center__00ff1_image2{
+      //mixinの呼び出し(center)
+    @include mixin.Loading-image("center","center2");//mixinの呼び出し。centerは、画面中央に配置する設定。
+    }
+    //画像パターンC
+    &.center__00ff1_image3{
+      //mixinの呼び出し(center)
+    @include mixin.Loading-image("center","center3");//mixinの呼び出し。centerは、画面中央に配置する設定。
+    } 
+  }
+
+  //ローディング中、右下で表示する画像の設定
+  .pageLoading_nowloading__00ff1{
+    position: absolute;//absoluteは、親要素に対して相対的な位置を指定する。
+    //親要素がposition:fixed;の場合、親要素は画面全体を覆うため、absoluteは画面全体に対して相対的な位置を指定することになる。
+    //右下に配置したいので、bottom:0;right:0;で親要素の右下に配置する。
+    bottom: 0;//下から0の位置に配置
+    right: 0;//右から0の位置に配置
+    //画像の場合、左上の角が基準になるため、あとで50%/containで画像を中央に配置する。
+    //mixinの呼び出し(center)
+    @include mixin.Loading-image("BR","center1");//mixinの呼び出し。centerは、画面中央に配置する設定。
+  }
+
+}

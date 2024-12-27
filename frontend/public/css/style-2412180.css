@@ -1,0 +1,124 @@
+html {
+  min-width: 320px;
+  font-size: 16px;
+  -webkit-overflow-scrolling: touch;
+}
+html.pc-app {
+  font-size: 1.6666666667vw;
+}
+html.m-app {
+  font-size: 4.1025641026vw;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+}
+
+*, :after, :before,
+address, blockquote,
+body,
+caption,
+dd, dl, dt, fieldset, form,
+h1, h2, h3, h4, h5, h6,
+html, img, label, legend,
+li, ol, p, pre,
+table, tbody, td, tfoot, th, thead, tr,
+ul {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+*, :after, :before {
+  box-sizing: border-box;
+  vertical-align: baseline;
+  --webkit-font-smoothing: antialiased;
+  --webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.6117647059);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(51, 133, 255, 0);
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+a {
+  text-decoration: none;
+  background-color: transparent;
+  outline: 0;
+}
+
+li, ul, ol {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+blockquote:after, blockquote:before, q:after, q:before {
+  content: none;
+}
+
+ins {
+  text-decoration: none;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+fieldset, img {
+  border: none;
+}
+
+button, input, select, textarea {
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: middle;
+  -webkit-user-select: auto;
+  user-select: auto;
+}
+button.textarea, input.textarea, select.textarea, textarea.textarea {
+  overflow: auto;
+  vertical-align: top;
+  resize: none;
+}
+
+[hidden] {
+  display: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input,
+textarea {
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+a,
+button,
+input {
+  -webkit-user-select: auto;
+  user-select: auto;
+}
+
+/*# sourceMappingURL=style-2412180.css.map */

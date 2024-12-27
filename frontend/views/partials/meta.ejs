@@ -1,0 +1,104 @@
+<%# ここではhead要素内のmetaタグを切り出しています。
+     ちなみにこのコメントはejsファイルの中で記載しますが、htmlには出力されません。 %>
+<%# 文字コードをUTF-8に設定するmetaタグ %>
+<meta charset="utf-8">
+<%# レンダリングモードを最新の標準モードに設定するmetaタグ。IEの互換モードを回避するために必要。 %>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<%# ページの内容をグーグルの検索エンジンにクロールさせるタグ。Web検索で引っかかるようにする目的 %>
+<meta name="googlebot" content="all">
+<%# ロボット（検索エンジンのクローラー）に対してページの内容をクロールさせるかどうかを設定するmetaタグ。
+     検索エンジンにページの内容をクロールさせる場合はindex,followを指定する。 %>
+<meta name="robots" content="index,follow">
+<%# ビューポートの設定を行うmetaタグ %>
+<%# viewport関係
+      width=device-width: デバイスの幅に合わせる
+      initial-scale=1.0: ページの初期表示倍率を1.0倍に設定
+      viewport-fit=cover: ビューポートの表示領域に合わせてコンテンツを表示 %>
+<meta name="viewport" 
+      content="width=device-width,
+               initial-scale=1.0,
+               viewport-fit=cover">
+<%# DNSプリフェッチの設定を行うmetaタグ
+     DNSプリフェッチとは、リンク先のドメイン名を事前に解決しておくことで、
+     ページの読み込み速度を向上させる技術（例えば今回の場合はmahoubin-app.jp/images/...などのファイル読み込みを早くできる） %>
+<link rel="dns-prefetch" href="//assets.mahoubin-app.jp">
+<%# ページのタイトルを設定するmetaタグ
+    ページのタイトルは index.jsで指定している。 %>
+<title><%= title %></title>
+<%# ページの説明を設定するmetaタグ %>
+<meta name="description" content="<%= description %>">
+<%# format-detection関連のmetaタグ
+      telephone=no: 電話番号をリンクに変換しない
+      email=no: メールアドレスをリンクに変換しない
+      adress=no: 住所をリンクに変換しない %>
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<%# ここからX関係のmetaタグ %>
+<%# Xにリンクを書いた時に300：157の画像を表示するmetaタグ 
+     最大サイズは4096×4096px、最小サイズは300×157px %>
+<meta name="twitter:card" content="summary_large_image">
+<%# サイトのTwitterカードのリンク設定metaタグ %>
+<meta name="twitter:site" content="https://mifans.mahoubin-app.jp">
+<%# OG（Open Graph）関係　（ソーシャルメディアでのリンク）のtitleのmetaタグ
+      サイトのOG情報を設定するmetaタグ %>     
+<meta property="og:title" content="VTuberグループ「りぷらい！」・Vユニット「さまえる」・Vライバー事務所「みっしょんたいむ Re:ろ～ど」の非公式応援ファンサイトです。">
+<meta property="og:description" content="<%= description %>">
+<meta property="og:url" content="https://mifans.mahoubin-app.jp">
+<%# OGの画像のmetaタグ。
+     サイズは1200×630px以上、アスペクト比は1.91:1 %>
+<meta property="og:image" content="https://assets.mahoubin-app.jp/missiontime/static/media/share-oaimage.jpg">
+<meta property="og:image:alt" content="<%= description %>">
+<meta property="og:site_name" content="<%= title %>">
+<%# ここまでX関係のmetaタグ %>
+<%# ここから見える部分のmetaタグ %>
+<%# ページのキーワードを設定するmetaタグ %>
+<meta property="keywords" content="りぷらい,さまえる,missiontime,みっしょんたいむ,みっしょんたいむReろ～ど,Reろ～ど,りろーど,おもかわ,Vtuber,ファンサイト,非公式">
+<link rel="icon" href="https://assets.mahoubin-app.jp/missiontime/static/media/favicon20241216.ico">
+<link rel="icon" href="/images/favicon20241216.ico"><%# 臨時用 %>
+<%# ここまで見える部分のmetaタグ %>
+<%# ここからモバイル関連のmetaタグ %>
+<%# mobile-web-app-capable関連のmetaタグ
+      content=yes: モバイルWebアプリケーションとして動作するように設定 
+      これをすることで、ホーム画面に追加するとアプリのように動作する
+      これはAndroid用Chromeの設定 %>
+<meta name="mobile-web-app-capable" content="yes">
+<%# apple-mobile-web-app-capable関連のmetaタグ
+      content=yes: モバイルWebアプリケーションとして動作するように設定 
+      これをすることで、ホーム画面に追加するとアプリのように動作する
+      これはApple製品用safariの設定 %>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<%# フルスクリーン表示を許可するmetaタグ
+     ホーム画面に追加した際にフルスクリーン表示にするタグ
+     apple-mobile-web-app-capableなどのcontentがyesになっていることが必要 %>
+<meta name="full-screen" content="yes">
+<%# フルスクリーン表示を許可するmetaタグ（中華スマホ用） %>
+<meta name="x5-fullscreen" content="true">
+<%# ページの表示モードを設定するmetaタグ （中華スマホ用）
+      ページの表示モードをアプリケーションモードに設定する
+      これをすることで、ホーム画面に追加した際にアプリのように動作する %>
+<meta name="x5-page-mode" content="app">
+<%# フルスクリーン表示を許可するmetaタグ（360ブラウザ用{中華スマホ用}） %>
+<meta name="360-fullscreen" content="true">
+<%# 主に中国のブラウザに対してWebKitレンダリングエンジンを使用するように指定するmetaタグ 
+     Webkitは中国のブラウザでレンダリングエンジンとして使用されているため（safariなど）
+     派生ブラウザなどでアクセスすると崩壊する可能性があるため追加しておく %>
+<meta name="renderer" content="webkit">
+<%# ここまでモバイル関連のmetaタグ %>
+<%# Googleのタグマネージャーを追加 %>
+<%# Google Tag Manager設定のjs読込がここに入る。 %>
+<%# iPadの時の処理をscriptで記述する %>
+<script>
+      document.documentElement.classList.add('pc-app');//pc-appクラスをhtmlタグに追加
+      var isIpad = function () {
+        var platform = navigator.platform === 'MacIntel' || navigator.platform === 'iPad';
+        return platform && navigator.maxTouchPoints > 1; //ipadの場合はtrueを返す
+      };
+      if (isIpad()) {
+        var pathnameArray = window.location.pathname; //現在のページのパス名を取得して配列に格納
+        if (pathnameArray.indexOf('/mobile') === -1) { //パス名に/mobileが含まれていない場合、
+          window.location.href = //ページのURLをリダイレクトする
+            window.location.href.split("#")[0] //#より前のURLを取得する目的
+            + (window.location.search ? '&target=h5' : '?target=h5') //クエリパラメータが存在しなかったら?を追加、あったら&を追加
+            + window.location.hash;//#から後の文字列を返す。
+        }
+      }
+</script>

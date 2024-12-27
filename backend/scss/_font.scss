@@ -1,0 +1,25 @@
+@use 'mixins';
+
+
+//フォントファイルの読み込み
+@include font-face("FOTSkipStdB", "https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/FOT-SkipStd-B.69560593.otf");
+@include font-face("FOT-SkipStd-D", "https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/FOT-SkipStd-D.c4b46963.otf");
+
+// ローディングの数字用フォント
+@include font-face("FZYASHJW_ZHONG", "https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/FZYASHJW_ZHONG.54ac2c57.TTF", "truetype");
+
+@include font-face("Arfangxinrunyuanb5Bd", "https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/arfangxinrunyuanb5_bd.8e57bb79.ttf");
+@include font-face("Arfangxinrunyuanb5Ed", "https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/arfangxinrunyuanb5_eb.dc8a7ee8.ttf");
+@include font-face("FZDBSJWGB", "https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/FZDBSJW-GBK.f80343c0.TTF");
+@include font-face("FZYASHS", "https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/FZYASHS-Light.b8a043b4.TTF");
+@include font-face("FZYASHSCu", "https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/FZYASHJW_Cu.2039548c.TTF");
+@include font-face("FZYASHJWZhun", "https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/FZYASHJW_Zhun.15df6c23.TTF");
+@include font-face("FZYASHJW", "https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/FZYASHJW.af4120ad.TTF");
+@include font-face("Source-Han-Serif-JP-Bold", "https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/Source-Han-Serif-JP-Bold.304c8a34.otf");
+@include font-face("GOTHIC", "https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/GOTHICB.32c4fc45.TTF");
+@include font-face("BASKVILL", "https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/BASKVILL.1846f847.TTF");
+@include font-face("Pretendard-Bold", "https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/Pretendard-Bold.ff83d1ea.otf");
+@include font-face("Pretendard-Regular", "https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/Pretendard-Regular.37d64f18.otf");
+@include font-face("Pretendard-SemiBold", "https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/Pretendard-SemiBold.37df6d19.otf");
+@include font-face("IBMPlexSansKR-Medium", "https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/IBMPlexSansKR-Medium.f1102478.ttf");
+@include font-face("arfangxinshuh7b5_bd_t", "https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/arfangxinshuh7b5_bd_t.2c972b80.ttf");

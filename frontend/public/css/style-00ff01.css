@@ -1,0 +1,65 @@
+@keyframes page-load-fadeout {
+  0% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+    z-index: -1;
+  }
+}
+.pageLoading__00ff1 {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  background: #fff;
+  background-image: url("https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/bg.c5d890d9.jpg");
+  background-size: cover;
+  background-position: 50%;
+  font-family: FZYASHJW_ZHONG, sans-serif;
+}
+.pageLoading__00ff1.fadeout_loading {
+  -webkit-animation: page-load-fadeout 0.5s ease both;
+  animation: page-load-fadeout 0.5s ease both;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+.pageLoading__00ff1 .pageLoading_center__00ff1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.pageLoading__00ff1 .pageLoading_center__00ff1.center__00ff1_image1 {
+  -webkit-transform: translate(-50%, -70%);
+  transform: translate(-50%, -70%);
+  width: 151px;
+  height: 110px;
+  background: url("https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/loading.dd32722e.gif") no-repeat 50%/contain;
+}
+.pageLoading__00ff1 .pageLoading_center__00ff1.center__00ff1_image2 {
+  -webkit-transform: translate(-50%, -70%);
+  transform: translate(-50%, -70%);
+  width: 151px;
+  height: 110px;
+  background: url("https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/loading.dd32722e.gif") no-repeat 50%/contain;
+}
+.pageLoading__00ff1 .pageLoading_center__00ff1.center__00ff1_image3 {
+  -webkit-transform: translate(-50%, -70%);
+  transform: translate(-50%, -70%);
+  width: 151px;
+  height: 110px;
+  background: url("https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/loading.dd32722e.gif") no-repeat 50%/contain;
+}
+.pageLoading__00ff1 .pageLoading_nowloading__00ff1 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  -webkit-transform: translate(0%, -50%);
+  transform: translate(0%, -50%);
+  width: 150px;
+  height: 170px;
+  background: url("https://assets.infoldgames.com/nikkiweb/infinitynikki/infinitynikkihome/_next/static/media/loading.dd32722e.gif") no-repeat 50%/contain;
+}
+
+/*# sourceMappingURL=style-00ff01.css.map */

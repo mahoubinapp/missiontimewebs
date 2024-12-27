@@ -1,0 +1,203 @@
+@charset "UTF-8";
+@use "variables";
+// mixinの呼び出し
+@use "mixin";
+
+
+// 共通のスタイル
+html {
+  min-width: 320px; // 横幅最小値
+  font-size: 16px; // デフォルトのフォントサイズ
+  -webkit-overflow-scrolling: touch; // スクロールバーをタッチ操作でスクロールした際に、スクロールバーがスムーズにスクロールするようにするためのプロパティ
+
+  &.pc-app { // htmlタグにpc-appクラスが付与された場合
+      font-size: 1.6666666667vw; // フォントサイズをvwで指定 vｗはビューポートの幅に対しての割合
+  }
+
+  &.m-app { // htmlタグにm-appクラスが付与された場合(モバイルでの表示)
+      font-size: 4.1025641026vw; // フォントサイズをvwで指定
+  }
+}
+
+//font-faceの設定
+//mixinとの兼ね合いや何を使うかなどの問題があるので一旦省略
+
+//-----デフォルト設定をリセット-----
+//全画面表示と背景の適用目的で幅・高さを100%に設定
+body,html {
+    width: 100%;
+    height: 100%;
+}
+
+//各要素のマージン・パディングをリセット
+*,:after,:before,  // *は全ての要素を指す afterは要素の後ろ beforeは要素の前
+address,blockquote, // addressは連絡先情報を示す要素 blockquoteは引用を示す要素
+body, // body要素
+caption, // caption要素
+dd,dl,dt,fieldset,form,// dd,dl,dtは定義リストの要素 fieldsetはフォームのグループ化 formはフォーム要素
+h1,h2,h3,h4,h5,h6, // h1~h6要素
+html,img,label,legend, // html要素 img要素 label要素 legend要素
+li,ol,p,pre, // li要素 ol要素 p要素 pre要素
+table,tbody,td,tfoot,th,thead,tr, // table要素 tbody要素 td要素 tfoot要素 th要素 thead要素 tr要素
+ul { // ul要素
+    margin: 0; // マージンを0に設定 マージンは要素の外側の余白
+    padding: 0; // パディングを0に設定 パディングは要素の内側の余白
+    border: 0; // ボーダーを0に設定 ボーダーは要素の境界線。境界線を無くしている。
+}
+
+//全ての要素と疑似要素にボックスモデルなどを適用
+*,:after,:before {
+    box-sizing: border-box; // ボックスモデルをborder-boxに設定 border-boxは要素の幅と高さにボーダーとパディングを含める設定
+    vertical-align: baseline; // 縦方向の配置をベースラインに合わせる。この時のベースラインは、行の下端にある文字の下端を指す。
+    --webkit-font-smoothing: antialiased; // フォントの滑らかさを設定 
+    --webkit-tap-highlight-color: rgba(0,0,0,0); // タップ時のハイライトカラーを透明に設定。デフォルトが青色なので透明に設定することでハイライトを無効化
+    //Webkit系ブラウザ向けなのでEdgeやFirefoxなどは適用されないため見え方に差異が生じる。公式でも見え方が変わるので非推奨とされている。
+}
+
+// foucus時のアウトラインの設定（キーボード操作時のみ白枠を創る）
+:focus-visible {
+    outline: 2px solid #ffffff9c; // アウトラインを白色の2pxの線に設定
+}
+
+//h1~h6要素のフォントウェイトを400(normal)に設定
+h1,h2,h3,h4,h5,h6 {
+    font-weight: 400; //見出しのフォントの太さを400(normal)に設定
+}
+
+//bodyのフォントファミリーを設定
+body {
+    font-family: system-ui, // system-uiはpcやスマホなどのOSに搭載されているフォントを指定
+    -apple-system, // -apple-systemはmacOSやiOSに搭載されているフォントを指定。
+    BlinkMacSystemFont, // BlinkMacSystemFontはmacOSやiOSに搭載されているフォントを指定。↑が使えない場合に使用
+    'Segoe UI', // Segoe UIはWindowsに搭載されているフォントを指定
+    Roboto, // RobotoはGoogleが開発したフォントを指定。Androidに搭載されているシステムフォント
+    Oxygen, // OxygenはKDEが開発したフォントを指定。Linuxに搭載されているシステムフォント
+    Ubuntu, // UbuntuはCanonicalが開発したフォントを指定。Linuxに搭載されているシステムフォント
+    Cantarell, // CantarellはGNOMEが開発したフォントを指定。Linuxに搭載されているシステムフォント
+    'Open Sans', // Open SansはGoogleが開発したフォントを指定。
+    'Helvetica Neue', // Helvetica NeueはmacOSやiOSに搭載されているフォントを指定。
+    sans-serif; // サンセリフ体のフォントを指定
+    // ここまでフォントファミリーを設定
+    -webkit-user-select: variables.$user-select; // ユーザーがテキストを選択できないように設定。Webkit系ブラウザ(Chrome,Safari)向け
+    user-select: variables.$user-select; // ユーザーがテキストを選択できないように設定（コピペ防止）
+    touch-action: manipulation; // タッチ操作時のスクロールやピンチイン・アウトをブラウザに任せる設定
+    //manipulationを設定することで、ダブルタップでのズームを無効化し、クリックイベントの遅延を解消することができる。
+    -webkit-tap-highlight-color: rgba(51, 133, 255, 0); // タップ時のハイライトカラーを透明に設定(青ベースにしている)
+    -webkit-text-size-adjust: 100%; // テキストのサイズを調整するプロパティを100%に設定。safari向け
+    -moz-text-size-adjust: 100%; // テキストのサイズを調整するプロパティを100%に設定。Firefox向け
+    text-size-adjust: 100%; // テキストのサイズを調整するプロパティを100%に設定。全ブラウザ向け
+}
+
+//a要素のテキストデコレーションをリセット
+a { //a要素はリンクを設定する要素
+    text-decoration: none; // テキストデコレーションを無しに設定。テキストデコレーションは下線や取り消し線などの装飾
+    background-color: transparent; // 背景色を透明に設定
+    outline: 0; // アウトラインを0に設定
+}
+
+//リストのスタイルをリセット
+li,ul,ol { // li要素 ul要素 ol要素
+    list-style: none; // リストスタイルを無しに設定.リストスタイルはリストのマーカー(数字や記号)のスタイル。
+    //要は頭についている数字や記号を消している。
+}
+
+//blockquote要素とq要素の引用符のスタイルをリセット（使う予定はないが一応）
+blockquote,q { // blockquote要素とは引用を示す要素 q要素とは短い引用を示す要素
+    quotes: none; // 引用符とは’’や「」などの引用符のこと。noneは引用符を表示しない設定
+
+    // afterとbeforeのコンテンツを削除
+    &:after,
+    &:before {
+        content: none; // インラインの前後に挿入されるコンテンツを削除
+    }
+}
+
+//ins要素のデコレーションを無しに設定
+ins { // ins要素は挿入されたテキストを示す要素
+    text-decoration: none; // テキストデコレーション（取消線など）を無しに設定
+}
+
+//del要素のデコレーションを取り消し線に設定(line-throughは取り消し線を示す)
+del {
+    text-decoration: line-through;// 取り消し線を設定
+}
+
+//fieldset,img要素のボーダーを無しに設定
+fieldset,img {//fieldset要素はフォームのグループ化 img要素は画像を表示する要素
+    border: none;// ボーダーを無しに設定
+}
+
+// テキスト系要素の設定
+// button要素/input要素/select要素/textarea要素のフォントサイズを100%に設定
+button,input,select,textarea {// button要素はボタンを表示する要素 input要素は入力欄を表示する要素 select要素は選択欄を表示する要素 textarea要素は複数行のテキスト入力欄を表示する要素
+    font-size: 100%; // フォントサイズを100%に設定
+    font-family: inherit; // フォントファミリーを親要素のフォントファミリーに設定 inheritは親要素のプロパティを継承する設定
+    vertical-align: middle; // 縦方向の配置を中央に設定 textare要素については別途設定
+    -webkit-user-select: variables.$textarea-user-select; // ユーザーがテキストを選択できるように設定. Webkit系ブラウザ向け
+    user-select: variables.$textarea-user-select; // ユーザーがテキストを選択できるように設定。textarea要素がついていたときのみ選択できるようにする
+}
+// textarea要素のリサイズを無効に設定
+textarea {
+    overflow: auto;// オーバーフロー時のスクロールバーを表示する設定
+    vertical-align: top;// 縦方向の配置を上に設定
+    resize: none;// リサイズを無効に設定
+}
+
+//hiddenクラスの要素を非表示に設定([hidden]とは非表示にする属性)
+[hidden] { // <div hidden>などのhidden属性を持つ要素
+    display: none; // 要素を非表示に設定
+}
+
+//table要素のセル間のボーダーをリセット
+table {
+    border-collapse: collapse; // ボーダーの重なりを解消する設定
+    border-spacing: 0; // セル間のボーダーを0に設定
+}
+
+//input,textarea要素の角丸をリセット
+input,textarea {
+    border-radius: 0; // 角丸を0に設定
+    -webkit-appearance: none; // Webkit系ブラウザ向けのスタイルをリセット
+    appearance: none; // スタイルをリセット
+}
+
+//a,button,input要素のユーザー選択を可能に設定
+a,button,input { //なんでここで再指定しているかというと、誤ってユーザー選択を無効にしてしまった場合に、再度有効にするため
+    -webkit-user-select: auto;
+    user-select: auto;
+}
+
+//type属性がbutton,reset,submitのボタン要素のスタイルをリセット
+[type=button],[type=reset],[type=submit],button { //type属性のhtmlの例：<input type="button"> <input type="reset"> <input type="submit"> <button>
+    -webkit-appearance: button; // Webkit系ブラウザ向けのbuttonスタイルを適用
+    appearance: button; // buttonスタイルを適用
+}
+
+//spinボタン系
+//type属性がnumber(数字入力フィールド)のinput要素のスタイルをwebkit系ブラウザ向けに設定
+[type=number]::-webkit-inner-spin-button,//webkit-inner-spin-buttonは数値入力フィールドのスピンボタン(上下の矢印)を指定。内側のスピンボタン
+[type=number]::-webkit-outer-spin-button //webkit-outer-spin-buttonは数値入力フィールドのスピンボタン(上下の矢印)を指定。外側のスピンボタン
+{
+    -webkit-appearance: none; // Webkit系ブラウザ向けのスタイル無しを設定
+    appearance: none; // スタイル無しを設定
+}
+
+//fileをuploadするボタンのスタイルをリセット.webkit系ブラウザ向け
+::-webkit-file-upload-button { //htmlの例：<input type="file">
+    font: inherit; // フォントを親要素のフォントに設定
+    -webkit-appearance: button; // Webkit系ブラウザ向けのbuttonスタイルを適用
+    appearance: button; // buttonスタイルを適用。このbuttonはbuttonタグのスタイルのこと。button要素のスタイルを適用する
+}
+
+button { // 再度button要素について指定（背景色透明はここで指定したかったため）
+    background-color: transparent; // 背景色を透明に設定
+    border: 0; // ボーダーを0に設定
+    outline: 0; // アウトラインを0に設定
+}
+
+video::-webkit-media-controls-start-playback-button {//video要素の再生ボタンをリセット。Webkit系ブラウザ向け
+    display: none; // ボタンを非表示に設定
+}
+
+
+//ここまで初期化。ここから共通スタイル

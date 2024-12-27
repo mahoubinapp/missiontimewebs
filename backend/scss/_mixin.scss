@@ -1,0 +1,43 @@
+@use 'sass:map';//mapの呼び出し
+@use 'variables';//変数の呼び出し
+//mixinの設定
+//font-faceのmixin
+@mixin font-face($name, $url, $format: "woff2") {
+  @font-face {
+      font-family: $name;
+      src: url($url) format($format);
+      font-display: swap;
+  }
+}
+
+
+//次のmixin用の変数
+$loading-center-width: 151px;//要素の幅を設定
+$loading-center-height: 110px;//要素の高さを設定
+$loading-BR-width: 150px;//要素の幅を設定
+$loading-BR-height: 170px;//要素の高さを設定
+//ローディング中の画像のmixin
+@mixin Loading-image($type, $image-key: null) {
+  //画面中央に来る画像！！！
+  //ローディング中の画像の設定($typeがcenter(画面中央)の場合)
+  @if $type == "center" {
+    //画像の場合、左上の角が基準になるため、あとで50%/containで画像を中央に配置する。
+    -webkit-transform: translate(-50%, -70%);//translate(-50%, -70%)は、要素の中心から左に50%、上に70%移動する。
+    transform: translate(-50%, -70%);//translateは要素を移動させる。-50%は、要素の幅の半分、-70%は、要素の高さの70%分上に移動する。
+    //画像の位置を移動させる場合は、このtranslateの値を調整する。
+    //要素の中心から50％動かすことで、要素の中心が真ん中に来るようにする。
+    //70%動かす理由は、下部に別の要素があるため、その分だけ上に移動させている。
+    width: $loading-center-width;//幅を設定
+    height: $loading-center-height;//高さを設定
+    background: url(map.get(variables.$pageload-images_center, $image-key)) no-repeat 50%/contain;
+    //50%/containは、画像を中央に配置する設定。containは、画像を縦横比を保ちつつ全体に表示する。
+    //no-repeatは、画像を繰り返し表示しない設定。
+  }
+  @else if $type == "BR" {//右下に配置する画像の場合
+    -webkit-transform: translate(0%, -50%); //高さを50%上に移動させる
+    transform: translate(0%, -50%); //高さを50%上に移動させる
+    width: $loading-BR-width;//幅を設定
+    height: $loading-BR-height;//高さを設定
+    background: url(map.get(variables.$pageload-images_center, $image-key)) no-repeat 50%/contain;
+  }
+}
